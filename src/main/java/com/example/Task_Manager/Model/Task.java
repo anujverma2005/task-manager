@@ -3,15 +3,17 @@ package com.example.Task_Manager.Model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "tasks")
 public class Task {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
     private String description;
-    private String username; 
+    private String username;
+    private String status = "pending"; // ✅ default status
 
     public Long getId() {
         return id;
@@ -43,5 +45,13 @@ public class Task {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
